@@ -11,3 +11,8 @@
   width: 50%;
   background: white;
 }
+
+.pop-up textarea {
+  width: 80%;
+  resize: none;
+}
