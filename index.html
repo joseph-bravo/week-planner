@@ -12,7 +12,7 @@
 
 
   <div class="modal">
-    <div class="pop-up">
+    <div class="pop-up text-center justify-center">
       <form action="" id="entry-form">
         <div class="row">
           <div class="col-full">
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="row">
-          <select>
+          <select id="weekday">
             <option value="sun">Sunday</option>
             <option value="mon">Monday</option>
             <option value="tue">Tuesday</option>
@@ -29,36 +29,23 @@
             <option value="fri">Friday</option>
             <option value="sat">Saturday</option>
           </select>
-          <input type="time">
+          <input type="time" id="time">
         </div>
-        <div class="row"></div>
-        <div class="row"></div>
+        <div class="row">
+          <div class="col-full">
+            <textarea id="description"></textarea>
+          </div>
+        </div>
+        <div class="row justify-right">
+          <div>
+            <button id="submit-btn">Submit</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
 
-  <form action="" id="entry-form">
-    <div class="row">
-      <div class="col-full">
-        <h1>Add Entry</h1>
-      </div>
-    </div>
-    <div class="row">
-      <select>
-        <option value="sun">Sunday</option>
-        <option value="mon">Monday</option>
-        <option value="tue">Tuesday</option>
-        <option value="wed">Wednesday</option>
-        <option value="thu">Thursday</option>
-        <option value="fri">Friday</option>
-        <option value="sat">Saturday</option>
-      </select>
-      <input type="time">
-    </div>
-    <div class="row"></div>
-    <div class="row"></div>
-  </form>
-  </div>
+
 
   <main class="container text-center">
     <header class="row">
