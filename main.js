@@ -62,8 +62,8 @@ var $weekdayHeader = document.querySelector('#sortedWeekday');
 
 function weekdaySelectHandler(event) {
   if (event.target.tagName === 'BUTTON') {
-    data.viewWeekDay = event.target.value;
-    redrawPage(data.viewWeekDay);
+    data.viewWeekday = event.target.value;
+    redrawPage(data.viewWeekday);
   }
 }
 
@@ -88,10 +88,35 @@ function createTableRow(entryObj) {
   $tdButtons.append($btnEdit, $btnDelete);
 
   $tr.append($tdTime, $tdDescription, $tdButtons);
+
+  $tr.dataset.entryId = entryObj.entryId;
+
   return $tr;
 }
 
+function fillEntryFormEdit(id) {
+  var editingData = data.grabEntryById(id);
+
+}
+
+function postButtonHandler(event) {
+  if (event.target.tagName === 'BUTTON') {
+    var $trOfButton = event.target.closest('[data-entry-id]');
+    var trOfButtonEntryId = JSON.parse($trOfButton.dataset.entryId);
+    if (event.target.matches('.btn-edit')) {
+      var editingID = trOfButtonEntryId;
+      data.editing = data.grabEntryById(editingID);
+    } else if (event.target.matches('.btn-delete')) {
+
+      $trOfButton.remove();
+      console.log(data.grabEntryById(editingID));
+    }
+  }
+}
+
 var $plans = document.querySelector('#plans');
+
+$plans.addEventListener('click', postButtonHandler);
 
 function redrawPage(weekday) {
   $weekdayHeader.textContent = data.viewWeekday;
@@ -100,12 +125,14 @@ function redrawPage(weekday) {
   }
   var entriesInWeekday = data.grabByWeekday(weekday);
   for (var i = 0; i < entriesInWeekday.length; i++) {
-    $plans.append(createTableRow(entriesInWeekday[i]));
+    var $tr = createTableRow(entriesInWeekday[i]);
+    entriesInWeekday[i].dom = $tr;
+    $plans.append($tr);
   }
 }
 
 window.addEventListener('DOMContentLoaded', function (event) {
-  redrawPage(data.viewWeekDay);
+  redrawPage(data.viewWeekday);
 });
 
 window.addEventListener('beforeunload', function (event) {

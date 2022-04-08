@@ -5,10 +5,13 @@ var data = {
   nextEntryID: 1,
   entries: [],
   view: 'entries',
-  viewWeekDay: 'sun',
+  viewWeekday: 'mon',
   editing: null,
   grabByWeekday: function (weekday) {
     return this.entries.filter(element => element.weekday === weekday);
+  },
+  grabEntryById: function (id) {
+    return this.entries.find(element => element.entryId === id);
   }
 };
 
