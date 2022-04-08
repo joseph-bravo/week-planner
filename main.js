@@ -41,6 +41,13 @@ function modalVisibility(bool) {
   }
 }
 
+var $popUp = document.querySelector('.pop-up');
+$modal.addEventListener('click', function (event) {
+  if (!event.target.includes($popUp)) {
+    modalVisibility(false);
+  }
+});
+
 var $newEntryBtn = document.querySelector('#add-entry');
 
 function newEntryBtnHandler(event) {
@@ -52,7 +59,6 @@ $newEntryBtn.addEventListener('click', newEntryBtnHandler);
 var $weekdaySelect = document.querySelector('.weekday-select');
 
 function weekdaySelectHandler(event) {
-  debugger;
   if (event.target.tagName === 'BUTTON') {
     data.viewWeekDay = event.target.value;
     redrawPage(data.viewWeekDay);
@@ -70,6 +76,7 @@ function createTableRow(entryObj) {
   $tdDescription.textContent = entryObj.description;
 
   $tr.append($tdTime, $tdDescription);
+  return $tr;
 }
 
 var $plans = document.querySelector('#plans');
