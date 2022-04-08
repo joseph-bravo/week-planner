@@ -1,34 +1,13 @@
-.container {
-  width: 90vw;
-}
-
-.row {
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0 0 0 / 25%);
+  position: absolute;
   display: flex;
-  width: 100%;
 }
 
-.col-full {
-  flex-basis: 100%;
-}
-
-.col-half {
-  flex-basis: 50%;
-}
-
-.col-quarter {
-  flex-basis: 25%;
-}
-
-.space-around {
-  justify-content: space-around;
-}
-
-.col-full,
-.col-half,
-.col-quarter {
-  margin: 0 auto;
-}
-
-.text-center {
-  text-align: center;
+.pop-up {
+  margin: auto;
+  width: 50%;
+  background: white;
 }
