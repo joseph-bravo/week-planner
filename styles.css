@@ -22,3 +22,9 @@
 .space-around {
   justify-content: space-around;
 }
+
+.col-full,
+.col-half,
+.col-quarter {
+  margin: 0 auto;
+}

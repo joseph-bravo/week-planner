@@ -10,7 +10,9 @@
   <main class="container">
 
     <header class="row">
-      <h1>Weekly Planner</h1>
+      <div class="col-full">
+        <h1>Weekly Planner</h1>
+      </div>
     </header>
     <div class="row space-around weekday-select">
       <div>
@@ -24,15 +26,30 @@
       </div>
     </div>
     <div class="row actions">
-      <button id="add-entry">Add Entry</button>
+      <div class="col-full">
+        <button id="add-entry">Add Entry</button>
+      </div>
     </div>
     <div class="row">
       <div class="col-full">
         <div class="row list-header">
-
+          <h2>Scheduled Events for Monday</h2>
         </div>
         <div class="row list-container">
-
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Time</td>
+                <td>Description</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
