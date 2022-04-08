@@ -43,7 +43,7 @@ function modalVisibility(bool) {
 
 var $popUp = document.querySelector('.pop-up');
 $modal.addEventListener('click', function (event) {
-  if (!event.target.includes($popUp)) {
+  if (!event.path.includes($popUp)) {
     modalVisibility(false);
   }
 });
@@ -58,6 +58,8 @@ $newEntryBtn.addEventListener('click', newEntryBtnHandler);
 
 var $weekdaySelect = document.querySelector('.weekday-select');
 
+var $weekdayHeader = document.querySelector('#sortedWeekday');
+
 function weekdaySelectHandler(event) {
   if (event.target.tagName === 'BUTTON') {
     data.viewWeekDay = event.target.value;
@@ -71,17 +73,28 @@ function createTableRow(entryObj) {
   var $tr = document.createElement('tr');
   var $tdTime = document.createElement('td');
   var $tdDescription = document.createElement('td');
+  var $tdButtons = document.createElement('td');
+  var $btnEdit = document.createElement('button');
+  var $btnDelete = document.createElement('button');
 
   $tdTime.textContent = entryObj.time;
   $tdDescription.textContent = entryObj.description;
+  $btnEdit.textContent = 'EDIT';
+  $btnDelete.textContent = 'DELETE';
 
-  $tr.append($tdTime, $tdDescription);
+  $btnEdit.classList.add('btn-edit');
+  $btnDelete.classList.add('btn-delete');
+
+  $tdButtons.append($btnEdit, $btnDelete);
+
+  $tr.append($tdTime, $tdDescription, $tdButtons);
   return $tr;
 }
 
 var $plans = document.querySelector('#plans');
 
 function redrawPage(weekday) {
+  $weekdayHeader.textContent = data.viewWeekday;
   while ($plans.children.length > 0) {
     $plans.children[0].remove();
   }
