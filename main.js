@@ -1,4 +1,6 @@
 /* global data */
+/* global writeToLocal */
+
 var $entryForm = document.querySelector('form#entry-form');
 var $entryWeekday = document.querySelector('#weekday');
 var $entryTime = document.querySelector('#time');
@@ -50,8 +52,10 @@ $newEntryBtn.addEventListener('click', newEntryBtnHandler);
 var $weekdaySelect = document.querySelector('.weekday-select');
 
 function weekdaySelectHandler(event) {
+  debugger;
   if (event.target.tagName === 'BUTTON') {
     data.viewWeekDay = event.target.value;
+    redrawPage(data.viewWeekDay);
   }
 }
 
@@ -68,6 +72,22 @@ function createTableRow(entryObj) {
   $tr.append($tdTime, $tdDescription);
 }
 
-window.addEventListener('DOMContentLoaded', function (event) {
+var $plans = document.querySelector('#plans');
 
+function redrawPage(weekday) {
+  while ($plans.children.length > 0) {
+    $plans.children[0].remove();
+  }
+  var entriesInWeekday = data.grabByWeekday(weekday);
+  for (var i = 0; i < entriesInWeekday.length; i++) {
+    $plans.append(createTableRow(entriesInWeekday[i]));
+  }
+}
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  redrawPage(data.viewWeekDay);
+});
+
+window.addEventListener('beforeunload', function (event) {
+  writeToLocal();
 });
