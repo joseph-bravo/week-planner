@@ -9,16 +9,21 @@ var $entryBtn = document.querySelector('#submit-btn');
 
 function submitHandler(event) {
   event.preventDefault();
+  if (!data.editing) {
+    var entryObj = {
+      weekday: $entryWeekday.value,
+      time: $entryTime.value,
+      description: $entryDescription.value,
+      entryId: data.nextEntryID
+    };
+    data.nextEntryID++;
 
-  var entryObj = {
-    weekday: $entryWeekday.value,
-    time: $entryTime.value,
-    description: $entryDescription.value,
-    entryId: data.nextEntryID
-  };
-  data.nextEntryID++;
-
-  data.entries.push(entryObj);
+    data.entries.push(entryObj);
+  } else {
+    data.editing.weekday = $entryWeekday.value;
+    data.editing.time = $entryTime.value;
+    data.editing.description = $entryDescription.value;
+  }
   $entryForm.reset();
 
   modalVisibility(false);
@@ -51,6 +56,7 @@ $modal.addEventListener('click', function (event) {
 var $newEntryBtn = document.querySelector('#add-entry');
 
 function newEntryBtnHandler(event) {
+  data.editing = null;
   modalVisibility(true);
 }
 
@@ -94,9 +100,10 @@ function createTableRow(entryObj) {
   return $tr;
 }
 
-function fillEntryFormEdit(id) {
-  var editingData = data.grabEntryById(id);
-
+function fillEntryFormEdit(entryObj) {
+  $entryWeekday.value = data.editing.weekday;
+  $entryTime.value = data.editing.time;
+  $entryDescription.value = data.editing.description;
 }
 
 function postButtonHandler(event) {
@@ -107,9 +114,10 @@ function postButtonHandler(event) {
     if (event.target.matches('.btn-edit')) {
       var editingID = trOfButtonEntryId;
       data.editing = data.grabEntryById(editingID);
+      fillEntryFormEdit(data.editing);
+      modalVisibility(true);
     } else if (event.target.matches('.btn-delete')) {
       var indexToDelete = data.entries.findIndex(element => element === trEntryObj);
-      console.log(indexToDelete);
       data.entries.splice(indexToDelete, 1);
       $trOfButton.remove();
     }
