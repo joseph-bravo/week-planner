@@ -103,13 +103,15 @@ function postButtonHandler(event) {
   if (event.target.tagName === 'BUTTON') {
     var $trOfButton = event.target.closest('[data-entry-id]');
     var trOfButtonEntryId = JSON.parse($trOfButton.dataset.entryId);
+    var trEntryObj = data.grabEntryById(trOfButtonEntryId);
     if (event.target.matches('.btn-edit')) {
       var editingID = trOfButtonEntryId;
       data.editing = data.grabEntryById(editingID);
     } else if (event.target.matches('.btn-delete')) {
-
+      var indexToDelete = data.entries.findIndex(element => element === trEntryObj);
+      console.log(indexToDelete);
+      data.entries.splice(indexToDelete, 1);
       $trOfButton.remove();
-      console.log(data.grabEntryById(editingID));
     }
   }
 }

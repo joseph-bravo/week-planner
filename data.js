@@ -24,9 +24,6 @@ function getFromLocal() {
   for (var prop in localData) {
     data[prop] = localData[prop];
   }
-  if (data.editing) {
-    data.editing = data.getEntryObject(data.editing.entryId);
-  }
 }
 
 getFromLocal();
