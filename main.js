@@ -46,3 +46,19 @@ function newEntryBtnHandler(entry) {
 }
 
 $newEntryBtn.addEventListener('click', newEntryBtnHandler);
+
+var $weekdaySelect = document.querySelector('.weekday-select');
+
+function weekdaySelectHandler(event) {
+  if (event.target.tagName === 'BUTTON') {
+    data.viewWeekDay = event.target.value;
+  }
+}
+
+$weekdaySelect.addEventListener('click', weekdaySelectHandler);
+
+function createTableRow(entryObj) {
+  var $tr = document.createElement('tr');
+  var $tdTime = document.createElement('td');
+  var $tdDate = document.createElement('td');
+}
