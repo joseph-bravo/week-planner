@@ -41,7 +41,7 @@ function modalVisibility(bool) {
 
 var $newEntryBtn = document.querySelector('#add-entry');
 
-function newEntryBtnHandler(entry) {
+function newEntryBtnHandler(event) {
   modalVisibility(true);
 }
 
@@ -60,5 +60,14 @@ $weekdaySelect.addEventListener('click', weekdaySelectHandler);
 function createTableRow(entryObj) {
   var $tr = document.createElement('tr');
   var $tdTime = document.createElement('td');
-  var $tdDate = document.createElement('td');
+  var $tdDescription = document.createElement('td');
+
+  $tdTime.textContent = entryObj.time;
+  $tdDescription.textContent = entryObj.description;
+
+  $tr.append($tdTime, $tdDescription);
 }
+
+window.addEventListener('DOMContentLoaded', function (event) {
+
+});

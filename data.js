@@ -4,5 +4,8 @@ var data = {
   entries: [],
   view: 'entries',
   viewWeekDay: 'sun',
-  editing: null
+  editing: null,
+  grabByWeekday: function (weekday) {
+    console.log(this.entries.filter(element => element.weekday === weekday));
+  }
 };
