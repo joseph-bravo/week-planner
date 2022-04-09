@@ -1,18 +1,58 @@
+* {
+  font-family: "Rubik Wet Paint", fantasy;
+  font-weight: normal;
+  color: white;
+}
+
+input,
+select,
+textarea {
+  background-color: black;
+}
+
+body {
+  background-image: url("graveyard-grim.gif");
+}
+
+button {
+  width: 7rem;
+  background-color: black;
+}
+
+.weekday-select {
+  margin-bottom: 2rem;
+}
+
+.weekday-select button {
+  height: 3rem;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
-  background: rgb(0 0 0 / 25%);
+  background: rgb(0 0 0 / 75%);
   position: absolute;
   display: flex;
 }
 
 .pop-up {
+  border: 50px ridge white;
   margin: auto;
   width: 50%;
-  background: white;
+  background: rgb(100, 100, 100);
 }
 
 .pop-up textarea {
   width: 80%;
   resize: none;
+}
+
+table {
+  width: 95%;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+td {
+  padding: 1rem;
 }

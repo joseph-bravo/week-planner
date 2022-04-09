@@ -1,5 +1,6 @@
 /* exported data */
 /* exported writeToLocal */
+/* exported reset */
 
 var data = {
   nextEntryID: 1,
@@ -24,6 +25,12 @@ function getFromLocal() {
   for (var prop in localData) {
     data[prop] = localData[prop];
   }
+}
+
+function reset() {
+  data = {};
+  localStorage.removeItem('data');
+  window.location.reload();
 }
 
 getFromLocal();

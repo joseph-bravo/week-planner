@@ -23,9 +23,11 @@ function submitHandler(event) {
     data.editing.weekday = $entryWeekday.value;
     data.editing.time = $entryTime.value;
     data.editing.description = $entryDescription.value;
+
   }
   $entryForm.reset();
 
+  redrawPage(data.viewWeekday);
   modalVisibility(false);
 }
 
