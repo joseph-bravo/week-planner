@@ -58,6 +58,8 @@ $modal.addEventListener('click', function (event) {
 var $newEntryBtn = document.querySelector('#add-entry');
 
 function newEntryBtnHandler(event) {
+  $entryForm.reset();
+  $entryWeekday.value = data.viewWeekday;
   data.editing = null;
   modalVisibility(true);
 }
